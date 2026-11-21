@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="สร้างคอนเซ็ปต์และเทมเพลตเวกเตอร์สำหรับทีมกราฟิก">
+<title>Forma — Print Design Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="#"><i aria-hidden="true">✳</i> forma<span>studio</span></a><nav aria-label="พื้นที่ทำงาน"><a href="#concept">คอนเซ็ปต์</a><a href="#image-workflow">Prompt</a><a href="#vectorizer">แปลงภาพ</a><a href="#export">เทมเพลต SVG</a></nav><span class="local"><b></b> ประมวลผลในเครื่อง</span></header>
+<main>
+<section class="intro"><div><p class="eyebrow">PRINT DESIGN STUDIO</p><h1>จากบรีฟ <em>สู่เวกเตอร์</em></h1><p>สร้างคอนเซ็ปต์ แปลงภาพ และเตรียมไฟล์ตั้งต้นสำหรับงานพิมพ์</p></div><button type="button" id="share-brief" class="share-button">คัดลอกลิงก์แชร์บรีฟ</button><p id="share-note" class="share-note"></p><div class="intro-mark" aria-hidden="true">✳</div></section>
+<section id="concept" class="workspace" aria-labelledby="concept-heading">
+<form id="brief" class="panel">
+<p class="eyebrow">DESIGN BRIEF</p><h2 id="concept-heading">บรีฟงานออกแบบ</h2>
+<label>ประเภทงาน<select name="type"><option value="desk">ปฏิทินตั้งโต๊ะ</option><option value="wall">ปฏิทินแขวน</option><option value="envelope">ซองอั่งเปา</option><option value="pack">บรรจุภัณฑ์</option><option value="poster">โปสเตอร์</option></select></label>
+<label>ธีมงาน<input name="theme" maxlength="100" required value="สวนในเมือง" placeholder="เช่น สวนในเมือง"></label>
+<label>อารมณ์ภาพ<select name="mood"><option value="fresh">สดชื่น</option><option value="calm">สงบ เรียบง่าย</option><option value="bold">สนุก มีพลัง</option><option value="lux">หรู สุขุม</option></select></label>
+<label>จำนวนสีพิมพ์<select name="inks"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
+<button class="primary" type="submit">✳ &nbsp; สร้าง 3 แนวทาง</button>
+</form>
+<div class="results"><div class="section-title"><div><p class="eyebrow">MOODBOARD</p><h2>แนวทางออกแบบ</h2></div><span id="count">3 แนวทาง</span></div><div id="cards" class="cards"></div><p class="note">* CMYK เป็นค่าประมาณจาก HEX ควรตรวจด้วยโปรไฟล์สีของโรงพิมพ์ก่อนผลิต</p></div>
+</section>
+<section id="image-workflow" class="workflow" aria-labelledby="prompt-heading">
+<div class="section-title"><div><p class="eyebrow">IMAGE WORKFLOW</p><h2 id="prompt-heading">Prompt สำหรับสร้างภาพ</h2></div></div>
+<div class="panel prompt-panel">
+<div><label for="prompt">Prompt ภาษาอังกฤษจากคอนเซ็ปต์ที่เลือก</label><textarea id="prompt" rows="5" readonly spellcheck="false"></textarea><button id="copy-prompt" class="secondary" type="button">คัดลอก Prompt</button></div>
+<div><p class="tool-label">เปิดเครื่องมือสร้างภาพ</p><div class="actions">
+<a class="secondary" href="https://www.bing.com/images/create" target="_blank" rel="noopener noreferrer">Bing Image Creator</a>
+<a class="secondary" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini</a>
+<a class="secondary" href="https://app.leonardo.ai/" target="_blank" rel="noopener noreferrer">Leonardo.ai</a>
+</div><p class="note">บริการภายนอกอาจต้องลงชื่อเข้าใช้และมีโควตาฟรีของตัวเอง</p></div>
+</div></section>
+<section id="vectorizer" class="workspace export" aria-labelledby="vector-heading">
+<div class="panel">
+<p class="eyebrow">ON-DEVICE VECTOR</p><h2 id="vector-heading">แปลงภาพเป็น SVG</h2>
+<label>ภาพต้นฉบับ PNG / JPG<input id="vector-file" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg"></label>
+<label>จำนวนสี <output id="vector-ink-count" for="vector-inks">6</output><input id="vector-inks" type="range" min="2" max="16" value="6"></label>
+<label>ลดจุดบนเส้น Path <output id="vector-smooth-count" for="vector-smooth">2</output><input id="vector-smooth" type="range" min="0" max="5" value="2"></label>
+<label class="checkbox"><input id="vector-white" type="checkbox" checked> ลบพื้นหลังขาวที่ติดขอบ</label>
+<p class="note">เหมาะกับภาพแบนหรือโลโก้ ภาพใหญ่จะย่อด้านยาวสุดเป็น 384 px ก่อนลากเส้น</p>
+</div>
+<div class="results"><div class="section-title"><div><p class="eyebrow">VECTOR PREVIEW</p><h2>ภาพและชุดสี</h2></div><span id="vector-size"></span></div>
+<div id="vector-preview" class="preview vector-preview"><p>เลือกภาพ PNG หรือ JPG เพื่อเริ่ม</p></div>
+<p id="vector-message" class="note" aria-live="polite"></p>
+<div id="vector-palette" class="palette-buttons"></div>
+<div class="actions vector-actions">
+<button id="vector-download" type="button" class="secondary" disabled>ดาวน์โหลด SVG</button>
+<button id="vector-use-colors" type="button" class="secondary" disabled>ใช้ชุดสีในเทมเพลต</button>
+<button id="vector-use-art" type="button" class="secondary" disabled>วางภาพในเทมเพลต</button>
+</div></div>
+</section>
+<section id="export" class="workspace export" aria-labelledby="export-heading">
+<form id="template" class="panel">
+<p class="eyebrow">ILLUSTRATOR EXPORT</p><h2 id="export-heading">ตั้งค่าเทมเพลต</h2>
+<label>ประเภทเทมเพลต<select name="type"><option value="desk">ปฏิทินตั้งโต๊ะ</option><option value="wall">ปฏิทินแขวน</option><option value="envelope">ซองอั่งเปา</option><option value="pack">บรรจุภัณฑ์</option><option value="poster">โปสเตอร์</option></select></label>
+<label>หน่วย<select name="unit"><option value="mm">มิลลิเมตร (mm)</option><option value="cm">เซนติเมตร (cm)</option><option value="in">นิ้ว (in)</option></select></label>
+<div class="pair"><label>กว้าง<input name="width" type="number" step="any" required value="210"></label><label>สูง<input name="height" type="number" step="any" required value="148"></label></div>
+<div id="calendar-settings">
+<div class="pair"><label>ระบบปี<select name="era"><option value="BE">พ.ศ.</option><option value="CE">ค.ศ.</option></select></label><label>ปี<input name="year" type="number" required step="1"></label></div>
+<label>วันเริ่มสัปดาห์<select name="week"><option value="1">วันจันทร์</option><option value="0">วันอาทิตย์</option></select></label>
+</div>
+<div class="applied"><p id="applied-vector" class="note"></p><div id="applied-palette" class="applied-palette"></div><button id="reset-vector" type="button" class="secondary" hidden>กลับไปใช้คอนเซ็ปต์</button></div><p class="note">ระยะตัดตก 3 mm รอบด้าน</p>
+<button type="submit" class="primary">ดาวน์โหลด SVG</button>
+</form>
+<div class="results"><div class="section-title"><div><p class="eyebrow">ARTBOARD PREVIEW</p><h2>ตัวอย่างก่อนส่งออก</h2></div><span id="size"></span></div><div class="preview" id="preview"></div><p class="note" id="export-note"></p></div>
+</section>
+<p id="status" role="status" class="status" hidden></p>
+</main>
+<footer>FORMA STUDIO <span>•</span> CONCEPT &amp; PRINT</footer>
+<script src="js/concepts.js" defer></script><script src="js/exporter.js" defer></script><script src="js/vectorizer.js" defer></script><script src="js/sharing.js" defer></script><script src="js/app.js" defer></script><script src="js/vector-ui.js" defer></script>
+</body>
+</html>
