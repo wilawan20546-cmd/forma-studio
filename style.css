@@ -36,3 +36,25 @@ label output{font-variant-numeric:tabular-nums;color:#42643d}
 .applied-palette{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 8px}
 .applied-palette:empty{display:none}
 .applied-palette span{width:15px;height:15px;border:1px solid #0002;border-radius:4px}
+
+/* Print concept photography and offline layout studies */
+.art[data-state]{position:relative;aspect-ratio:3/2;overflow:hidden;isolation:isolate;background:#e8ece5}
+.generated-art{width:100%;height:100%;object-fit:cover;display:none}
+.art[data-state=ready] .generated-art{display:block}
+.art[data-state=ready] .print-draft{display:none}
+.art[data-state=loading]::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 24%,#fff9 47%,transparent 70%);transform:translateX(-100%);animation:art-loading 1.6s infinite}
+@keyframes art-loading{to{transform:translateX(100%)}}
+@media(prefers-reduced-motion:reduce){.art[data-state=loading]::after{animation:none}}
+.print-draft{display:grid;place-items:center;height:100%;padding:10%;background:#e6e6dc}
+.draft-paper{width:86%;min-width:0;aspect-ratio:1.7;padding:9% 9% 7%;display:grid;grid-template-rows:auto 1fr auto auto;gap:7%;background:#fdfbf4;color:var(--draft-ink);box-shadow:0 6px 19px #24342b30;transform:rotate(-4deg);overflow:hidden}
+.draft-paper span,.draft-paper small{font-size:clamp(.48rem,1.4vw,.66rem);letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+.draft-paper strong{font-size:clamp(.75rem,2vw,1.55rem);line-height:1.2;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.draft-rule{height:4px;background:var(--draft-accent)}
+.draft-1 .draft-paper{transform:rotate(4deg);border:6px double var(--draft-accent);text-align:center}
+.draft-2 .draft-paper{transform:rotate(-2deg);border-left:12px solid var(--draft-accent)}
+.art-direction{font-size:.85rem;margin:4px 0 10px}
+.art-direction dt{font-weight:780}
+.art-direction dd{margin:1px 0 8px;color:var(--muted);overflow-wrap:anywhere}
+.image-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:.8rem}
+.card .image-status{margin:4px 0;font-size:.8rem}
+.vector-handoff{margin-top:6px;text-align:left}

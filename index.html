@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="สร้างคอนเซ็ปต์และเทมเพลตเวกเตอร์สำหรับทีมกราฟิก">
 <title>Forma — Print Design Studio</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
 <header class="top"><a class="brand" href="#"><i aria-hidden="true">✳</i> forma<span>studio</span></a><nav aria-label="พื้นที่ทำงาน"><a href="#concept">คอนเซ็ปต์</a><a href="#image-workflow">Prompt</a><a href="#vectorizer">แปลงภาพ</a><a href="#export">เทมเพลต SVG</a></nav><span class="local"><b></b> ประมวลผลในเครื่อง</span></header>
@@ -20,7 +20,7 @@
 <label>จำนวนสีพิมพ์<select name="inks"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
 <button class="primary" type="submit">✳ &nbsp; สร้าง 3 แนวทาง</button>
 </form>
-<div class="results"><div class="section-title"><div><p class="eyebrow">MOODBOARD</p><h2>แนวทางออกแบบ</h2></div><span id="count">3 แนวทาง</span></div><div id="cards" class="cards"></div><p class="note">* CMYK เป็นค่าประมาณจาก HEX ควรตรวจด้วยโปรไฟล์สีของโรงพิมพ์ก่อนผลิต</p></div>
+<div class="results"><div class="section-title"><div><p class="eyebrow">MOODBOARD</p><h2>แนวทางออกแบบ</h2></div><span id="count">3 แนวทาง</span></div><div id="cards" class="cards"></div><p class="note">ภาพ AI ส่งธีมงานไปยัง Pollinations · CMYK เป็นค่าประมาณจาก HEX ควรตรวจด้วยโปรไฟล์สีของโรงพิมพ์ก่อนผลิต</p></div>
 </section>
 <section id="image-workflow" class="workflow" aria-labelledby="prompt-heading">
 <div class="section-title"><div><p class="eyebrow">IMAGE WORKFLOW</p><h2 id="prompt-heading">Prompt สำหรับสร้างภาพ</h2></div></div>
@@ -59,17 +59,19 @@
 <div class="pair"><label>กว้าง<input name="width" type="number" step="any" required value="210"></label><label>สูง<input name="height" type="number" step="any" required value="148"></label></div>
 <div id="calendar-settings">
 <div class="pair"><label>ระบบปี<select name="era"><option value="BE">พ.ศ.</option><option value="CE">ค.ศ.</option></select></label><label>ปี<input name="year" type="number" required step="1"></label></div>
-<label>วันเริ่มสัปดาห์<select name="week"><option value="1">วันจันทร์</option><option value="0">วันอาทิตย์</option></select></label>
+<label>เลย์เอาต์<select name="layout"><option value="annual">12 เดือนในหน้าเดียว</option><option value="cover">หน้าปก</option><option value="monthly">รายเดือน · 1 เดือนต่อหน้า</option></select></label>
+<label id="calendar-month" hidden>เดือน<select name="month"><option value="1">มกราคม</option><option value="2">กุมภาพันธ์</option><option value="3">มีนาคม</option><option value="4">เมษายน</option><option value="5">พฤษภาคม</option><option value="6">มิถุนายน</option><option value="7">กรกฎาคม</option><option value="8">สิงหาคม</option><option value="9">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option></select></label>
+<label id="calendar-week">วันเริ่มสัปดาห์<select name="week"><option value="1">วันจันทร์</option><option value="0">วันอาทิตย์</option></select></label>
 </div>
 <div class="applied"><p id="applied-vector" class="note"></p><div id="applied-palette" class="applied-palette"></div><button id="reset-vector" type="button" class="secondary" hidden>กลับไปใช้คอนเซ็ปต์</button></div><p class="note">ระยะตัดตก 3 mm รอบด้าน</p>
 <button type="submit" class="primary">ดาวน์โหลด SVG</button>
 </form>
-<div class="results"><div class="section-title"><div><p class="eyebrow">ARTBOARD PREVIEW</p><h2>ตัวอย่างก่อนส่งออก</h2></div><span id="size"></span></div><div class="preview" id="preview"></div><p class="note" id="export-note"></p></div>
+<div class="results"><div class="section-title"><div><p class="eyebrow">ARTBOARD PREVIEW</p><h2>ตัวอย่างก่อนส่งออก</h2></div><span id="size"></span></div><div class="preview" id="preview"></div><p class="note" id="export-note"></p><p class="note" id="holiday-note"></p></div>
 </section>
-<p id="startup-note" class="note" role="status">หากแนวทางออกแบบยังว่าง ให้โหลดหน้าใหม่และตรวจว่าไฟล์ forma-studio-v2.0.1.js อยู่ข้าง index.html</p>
+<p id="startup-note" class="note" role="status">หากแนวทางออกแบบยังว่าง ให้โหลดหน้าใหม่และตรวจว่าไฟล์ forma-studio-v3.0.js อยู่ข้าง index.html</p>
 <p id="status" role="status" class="status" hidden></p>
 </main>
 <footer>FORMA STUDIO <span>•</span> CONCEPT &amp; PRINT</footer>
-<script src="./forma-studio-v2.0.1.js" defer></script>
+<script src="./forma-studio-v3.0.js" defer></script>
 </body>
 </html>
